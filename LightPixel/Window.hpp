@@ -79,6 +79,9 @@
 #if (_WIN32_WINNT >= _WIN32_WINNT_WIN7)
 		Signal<Window const & , HTOUCHINPUT , uint32_t > TouchEvent;
 #endif
+		Signal<int> MouseStateEvent;
+		Signal<int> MouseButtonEvent;
+		
 		//Signal<ivec2 const & , uint32_t > PointerDownEvent;
 		//Signal<Window const & , int2 const & , uint32_t > PointerUpEvent;
 		//Signal<Window const & , int2 const & , uint32_t , bool > PointerUpdateEvent;

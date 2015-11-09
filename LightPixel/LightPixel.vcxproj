@@ -90,11 +90,15 @@
     <ClInclude Include="GLRenderContext.hpp" />
     <ClInclude Include="GLRenderer.hpp" />
     <ClInclude Include="GraphicsBuffer.hpp" />
+    <ClInclude Include="Input.hpp" />
     <ClInclude Include="LightPixel.hpp" />
     <ClInclude Include="PreDeclare.hpp" />
     <ClInclude Include="Renderable.hpp" />
+    <ClInclude Include="RenderableHelper.hpp" />
     <ClInclude Include="RenderEffect.hpp" />
     <ClInclude Include="Renderer.hpp" />
+    <ClInclude Include="RenderLayout.hpp" />
+    <ClInclude Include="ResLoader.hpp" />
     <ClInclude Include="SceneManager.hpp" />
     <ClInclude Include="Signals.hpp" />
     <ClInclude Include="Util.hpp" />
@@ -113,6 +117,7 @@
     <ClCompile Include="GLRenderContext.cpp" />
     <ClCompile Include="GLRenderer.cpp" />
     <ClCompile Include="GraphicsBuffer.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="LightPixel.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -120,8 +125,11 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LightPixel.hpp</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Renderable.cpp" />
+    <ClCompile Include="RenderableHelper.cpp" />
     <ClCompile Include="RenderEffect.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RenderLayout.cpp" />
+    <ClCompile Include="ResLoader.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="Window.cpp" />

@@ -1,6 +1,7 @@
 #include "LightPixel.hpp"
 #include "Engine.hpp"
 #include "Util.hpp"
+#include "Input.hpp"
 #include "Config.hpp"
 #include "SceneManager.hpp"
 
@@ -31,7 +32,8 @@ Engine& Engine::Instance()
 
 void Engine::Init()
 {
-	mCfg = MakeSharedPtr<Config>();
+	mCfg      = MakeSharedPtr<Config>();
+	mInput    = MakeSharedPtr<Input>();
 	mSceneMgr = MakeSharedPtr<SceneManager>();
 
 	if (mCfg->render_name == "GLES")
@@ -57,6 +59,12 @@ void Engine::AppInstance(Application& app)
 Application& Engine::AppInstance()
 {
 	return *mApp;
+}
+
+
+InputPtr Engine::InputInstance()
+{
+	return mInput;
 }
 
 ConfigPtr Engine::ConfigInstance()

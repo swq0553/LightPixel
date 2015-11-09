@@ -1,6 +1,7 @@
 #include "LightPixel.hpp"
 
 #include "App.hpp"
+#include <Input.hpp>
 #include <Engine.hpp>
 #include <Window.hpp>
 #include "Config.hpp"
@@ -12,6 +13,7 @@ Application::Application(std::string const & name)
 	ConfigPtr cfg = Engine::Instance().ConfigInstance();
 
 	mMain_wnd = this->MakeWindow(name, cfg->width, cfg->height, false);
+	
 }
 
 Application::Application(std::string const & name, void* native_wnd)
@@ -20,6 +22,7 @@ Application::Application(std::string const & name, void* native_wnd)
 	ConfigPtr cfg = Engine::Instance().ConfigInstance();
 
 	mMain_wnd = this->MakeWindow(name, native_wnd);
+
 }
 
 
@@ -29,6 +32,7 @@ Application::~Application()
 
 void Application::Create()
 {
+	Engine::Instance().InputInstance()->Init();
 	Engine::Instance().RendererInstance()->CreateRenderContext();
 	
 	this->OnCreate();
@@ -85,8 +89,9 @@ void Application::Run()
 		}
 		else
 		{
-			render->Refresh();
+			
 		}
+		render->Refresh();
 	}
 
 	this->OnDestroy();
@@ -121,8 +126,6 @@ void Application::Update()
 {
 	this->UpdateStats();
 	this->DoUpdate();
-
-	
 }
 
 void Application::UpdateStats()

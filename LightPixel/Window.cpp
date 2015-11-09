@@ -2,8 +2,9 @@
 #include <Window.hpp>
 
 #include <Util.hpp>
-#include <windowsx.h>
+#include <Input.hpp>
 
+#include <windowsx.h>
 //namespace LightPixel
 //{
 	LRESULT Window::WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -81,7 +82,7 @@
 #pragma warning(pop)
 
 
-		::ShowWindow(wnd_, SW_SHOWNORMAL);
+		::ShowWindow(wnd_, SW_HIDE);
 		::UpdateWindow(wnd_);
 	}
 
@@ -198,6 +199,44 @@
 
 		case WM_INPUT:
 			this->RawInputEvent(reinterpret_cast<HRAWINPUT>(lParam));
+			break;
+
+	//Mouse
+		case WM_LBUTTONDBLCLK:		
+			this->MouseStateEvent(Input::BUTTON_DCLICK);
+			this->MouseButtonEvent(Input::BUTTON_LEFT);
+			break;		
+		case WM_LBUTTONDOWN:			
+			this->MouseStateEvent(Input::BUTTON_DOWN);
+			this->MouseButtonEvent(Input::BUTTON_LEFT);
+			break;			
+		case WM_LBUTTONUP:
+			this->MouseStateEvent(Input::BUTTON_UP);
+			this->MouseButtonEvent(Input::BUTTON_LEFT);
+			break;
+		case WM_RBUTTONDBLCLK:
+			this->MouseStateEvent(Input::BUTTON_DCLICK);
+			this->MouseButtonEvent(Input::BUTTON_RIGHT);
+			break;
+		case WM_RBUTTONDOWN:
+			this->MouseStateEvent(Input::BUTTON_DOWN);
+			this->MouseButtonEvent(Input::BUTTON_RIGHT);
+			break;
+		case WM_RBUTTONUP:
+			this->MouseStateEvent(Input::BUTTON_UP);
+			this->MouseButtonEvent(Input::BUTTON_RIGHT);
+			break;
+		case WM_MBUTTONDBLCLK:
+			this->MouseStateEvent(Input::BUTTON_DCLICK);
+			this->MouseButtonEvent(Input::BUTTON_MIDDLE);
+			break;
+		case WM_MBUTTONDOWN:
+			this->MouseStateEvent(Input::BUTTON_DOWN);
+			this->MouseButtonEvent(Input::BUTTON_MIDDLE);
+			break;
+		case WM_MBUTTONUP:
+			this->MouseStateEvent(Input::BUTTON_UP);
+			this->MouseButtonEvent(Input::BUTTON_MIDDLE);
 			break;
 
 #if (_WIN32_WINNT >= _WIN32_WINNT_WIN8)

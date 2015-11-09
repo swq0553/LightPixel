@@ -19,9 +19,6 @@
     <Filter Include="OpenGL">
       <UniqueIdentifier>{365d5b0a-20df-47e9-82fd-bf97c29dcf6d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="OpenGLES">
-      <UniqueIdentifier>{88dd03a5-37df-4a91-84d8-e6e231d90ad4}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LightPixel.hpp">
@@ -81,6 +78,18 @@
     <ClInclude Include="Renderable.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="RenderLayout.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableHelper.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ResLoader.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -135,6 +144,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Renderable.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderLayout.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableHelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ResLoader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

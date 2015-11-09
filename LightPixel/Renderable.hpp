@@ -28,8 +28,9 @@ public:
 	virtual void DoRenderBegin();
 	virtual void DoRenderEnd();
 
-	virtual BoundingBoxPtr GetBoundingBox() = 0;
-	inline RenderMaterial GetMaterial(){ return mMtl; };
+	virtual BoundingBoxPtr  GetBoundingBox()  = 0;
+	virtual RenderLayoutPtr GetRenderLayout() = 0;
+	inline  RenderMaterial   GetMaterial(){ return mMtl; };
 protected:
 	RenderTechniquePtr     mTech;
 	RenderMaterial         mMtl;

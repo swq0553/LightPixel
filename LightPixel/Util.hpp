@@ -15,5 +15,11 @@
 	{
 		return std::shared_ptr<T>(new T(std::forward<Args>(args)...), std::default_delete<T>());
 	}
+
+	//×Ö·û´®·Ö¸îº¯Êý
+	typedef std::vector<std::string> StringVec;
+	StringVec Split(std::string str, std::string pattern);
+	int       Str2Int(std::string str);
+	float     Str2Float(std::string str);
 //}
 #endif

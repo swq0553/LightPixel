@@ -32,7 +32,7 @@ GLRenderContext::GLRenderContext()
 	::AdjustWindowRect(&rc, style, false);
 
 	::SetWindowLongPtrW(hWnd_, GWL_STYLE, style);
-	::SetWindowPos(hWnd_, nullptr, left_, top_, width_, height_, SWP_SHOWWINDOW | SWP_NOZORDER);
+	::SetWindowPos(hWnd_, nullptr, left_, top_, width_, height_, SWP_HIDEWINDOW | SWP_NOZORDER);
 
 	// there is no guarantee that the contents of the stack that become
 	// the pfd are zeroed, therefore _make sure_ to clear these bits.
@@ -100,7 +100,7 @@ GLRenderContext::GLRenderContext()
 	//多重采样
 	glEnable(GL_MULTISAMPLE);
 
-	//::ShowWindow(hWnd_, SW_SHOWNORMAL);
+	::ShowWindow(hWnd_, SW_SHOWNORMAL);
 	::UpdateWindow(hWnd_);
 }
 
@@ -155,12 +155,13 @@ void GLRenderContext::OnClose()
 
 void GLRenderContext::SwapBuffers()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+	//glClearColor(0.5, 0.5, 0.5, 1); // black
+	
 
 
 	::SwapBuffers(hDC_);
-	
-	
+	//glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void GLRenderContext::WindowMovedOrResized()

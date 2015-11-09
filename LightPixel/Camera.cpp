@@ -28,13 +28,13 @@
 		mProjView = glm::perspective(fov,  aspect,  zNear, zFar);
 	}
 
-	Mat4 Camera::GetViewMatrix()
+	const Mat4 Camera::GetViewMatrix()
 	{
 		float* tt = &mModelView[0][0];
 		return mModelView;
 	}
 
-	Mat4 Camera::GetProjMatrix()
+	const Mat4 Camera::GetProjMatrix()
 	{
 		return mProjView;
 	}

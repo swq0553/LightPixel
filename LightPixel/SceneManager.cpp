@@ -2,6 +2,7 @@
 #include "SceneManager.hpp"
 #include "App.hpp"
 #include "Camera.hpp"
+#include "Renderable.hpp"
 
 SceneManager::SceneManager()
 {
@@ -19,7 +20,7 @@ void SceneManager::Init()
 
 void SceneManager::Update()
 {
-	this->FlushScene();
+	
 	//¿ÉÊÓ²Ã¼ô
 
 	//äÖÈ¾ÅÅÐò
@@ -31,6 +32,14 @@ void SceneManager::Update()
 	//{
 		//render.Render(item);
 	//}
+
+	
+	for (RenderablePtr &item : mQueue)
+	{
+		item->Render();
+		std::cout << "test" << std::endl;
+	}
+	this->FlushScene();
 }
 
 void SceneManager::FlushScene()
@@ -47,4 +56,9 @@ void SceneManager::SetCamera(CameraPtr camera)
 CameraPtr SceneManager::GetCamera()
 {
 	return mCamera;
+}
+
+void SceneManager::AddRenderable(RenderablePtr obj)
+{
+	mQueue.push_back(obj);
 }

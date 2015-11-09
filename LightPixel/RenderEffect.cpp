@@ -1,6 +1,7 @@
 #include "LightPixel.hpp"
 #include "RenderEffect.hpp"
-
+#include <sstream>
+#include <fstream>
 
 RenderEffect::RenderEffect()
 {
@@ -58,7 +59,7 @@ void RenderPass::UnBind()
 	glUseProgram(0);
 }
 
-void RenderPass::SetProgram(Program* program)
+void RenderPass::SetProgram(ProgramPtr program)
 {
 	mProgram = program;
 }
@@ -138,6 +139,22 @@ bool Program::compileShader(const std::string & source, ShaderType type)
 		glAttachShader(handle, shaderHandle);
 		return true;
 	}
+}
+
+void Program::compileShader(const char * fileName, ShaderType type)
+{
+	std::ifstream inFile(fileName, std::ios::in);
+	if (inFile)
+	{
+		// Get file contents
+		std::stringstream code;
+		code << inFile.rdbuf();
+		inFile.close();
+
+		compileShader(code.str(), type);
+	}
+
+	
 }
 
 bool Program::link()
@@ -322,4 +339,31 @@ void Program::setUniform(const char *name, bool val)
 int Program::getUniformLocation(const char * name)
 {
 	return glGetUniformLocation(handle, name);
+}
+int Program::getGetAttribLocation(const char * name)
+{
+	return glGetAttribLocation(handle, name);
+}
+void Program::setUniform3fv(const char *name, int count, float* v)
+{
+	int loc = getUniformLocation(name);
+	if (loc >= 0)
+	{
+		glUniform3fv(loc,count,v);
+	}
+	else {
+		printf("Uniform: %s not found.\n", name);
+	}
+}
+
+void Program::setUniform1fv(const char *name, int count, float* v)
+{
+	int loc = getUniformLocation(name);
+	if (loc >= 0)
+	{
+		glUniform1fv(loc, count, v);
+	}
+	else {
+		printf("Uniform: %s not found.\n", name);
+	}
 }

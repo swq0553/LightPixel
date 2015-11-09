@@ -13,8 +13,8 @@
 		~Camera();
 		void LookAt(const Vec3 &eye, const Vec3 & lookAt, const Vec3 & up);
 		void Project(float fov, float aspect, float near, float far);
-		Mat4 GetViewMatrix();
-		Mat4 GetProjMatrix();
+		const Mat4 GetViewMatrix();
+		const Mat4 GetProjMatrix();
 
 		void Forward();
 		Vec3 Eye();

@@ -11,6 +11,7 @@ public:
 
 	void Init();
 
+	InputPtr        InputInstance();
 	ConfigPtr       ConfigInstance();
 	
 	Application&    AppInstance();
@@ -19,13 +20,16 @@ public:
 	bool            RendererValid() const;
 	RendererPtr     RendererInstance();
 	SceneManagerPtr SceneManagerInstance();
+
 	
 private:
 	static std::shared_ptr<Engine> engine_instance_;
-	ConfigPtr           mCfg;
+	ConfigPtr           mCfg;	
 	Application*		mApp;
-	
-	SceneManagerPtr		mSceneMgr;
+
+	InputPtr            mInput;
 	RendererPtr         mRenderer;
+	SceneManagerPtr		mSceneMgr;
+	
 };
 

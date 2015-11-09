@@ -23,6 +23,8 @@ private:
 };
 
 //应包含shader对象和渲染状态
+class Program;
+typedef std::shared_ptr<Program> ProgramPtr;
 class RenderPass
 {
 public:
@@ -31,10 +33,10 @@ public:
 
 	void Bind();
 	void UnBind();
-	void SetProgram(Program*);
-	Program* GetProgram(){ return mProgram; }
+	void SetProgram(ProgramPtr);
+	ProgramPtr GetProgram(){ return mProgram; }
 private:
-	Program* mProgram;
+	ProgramPtr mProgram;
 	bool     mCompile;
 };
 class Program
@@ -47,7 +49,8 @@ public:
 public:
 	Program(void);
 	~Program(void);
-
+	
+	void   compileShader(const char * fileName, ShaderType type);
 	bool   compileShader(const std::string & source, ShaderType type);
 	bool   link();
 	bool   validate();
@@ -67,7 +70,11 @@ public:
 	void   setUniform(const char *name, float val);
 	void   setUniform(const char *name, int val);
 	void   setUniform(const char *name, bool val);
-	int    getUniformLocation(const char * name);
+	void   setUniform1fv(const char *name, int count, float* v);
+	void   setUniform3fv(const char *name, int count, float* v);
+
+	int    getUniformLocation(const char * name);	
+	int    getGetAttribLocation(const char * name);
 private:
 	int  handle;
 	bool linked;
